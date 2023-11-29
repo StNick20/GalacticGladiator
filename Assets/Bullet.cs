@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [Range(1, 40)]
-    [SerializeField] private float speed = 30f;
-
-    [Range(1,1000)]
-    [SerializeField] private float lifeTime = 1000f;
+     private float speed = 30f;
+     private float lifeTime = 3f;
 
     private Rigidbody2D rb;
 
