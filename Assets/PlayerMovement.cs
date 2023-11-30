@@ -1,9 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 Rigidbody2D body;
 public GameObject Bullet;
+public Transform firingPoint;
+public bool ableToFire = true;
 
 
 float horizontal;
@@ -27,7 +31,10 @@ void Update()
    float angle = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
    transform.localRotation = Quaternion.Euler(0, 0, angle);
 
-   if (Input.GetMouseButtonDown(0)){
+   if (Input.GetMouseButtonDown(0) && ableToFire){
+      Shoot();
+   }
+   else if (Input.GetMouseButton(0) && ableToFire) {
       Shoot();
    }
 }
@@ -44,6 +51,14 @@ void FixedUpdate()
 }
 
 private void Shoot() {
-      Instantiate(Bullet, transform.position, transform.rotation);
+      Instantiate(Bullet, firingPoint.position, firingPoint.rotation);
+      StartCoroutine(shootCooldown());
+}
+
+private IEnumerator shootCooldown()
+{
+   ableToFire = false;
+   yield return new WaitForSeconds(1f);
+   ableToFire = true;
 }
 }
