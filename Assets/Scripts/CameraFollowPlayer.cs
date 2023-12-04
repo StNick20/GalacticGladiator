@@ -5,9 +5,18 @@ using UnityEngine;
 public class CameraFollowPlayer : MonoBehaviour
 {
     public Transform followTransform;
+    private bool followPlayer = true;
     
     void FixedUpdate()
     {
-     this.transform.position =  new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z);  
+        if (followPlayer) {
+
+        if (followTransform != null){
+     this.transform.position =  new Vector3(followTransform.position.x, followTransform.position.y, this.transform.position.z); 
+        }
+        else {
+            followPlayer = false;
+        }
+        }
     }
 }
