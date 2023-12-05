@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Firing")]
+    
     Rigidbody2D body;
+    [Header("Firing")]
     public GameObject Bullet;
     public Transform firingPoint;
     public bool ableToFire = true;
