@@ -58,7 +58,7 @@ private void Shoot() {
 private IEnumerator shootCooldown()
 {
    ableToFire = false;
-   yield return new WaitForSeconds(1f);
+   yield return new WaitForSeconds(0.3f);
    ableToFire = true;
 }
 }
