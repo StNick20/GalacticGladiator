@@ -257,50 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329374}
   m_CullTransparentMesh: 1
---- !u!1 &201965882
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 201965884}
-  - component: {fileID: 201965883}
-  m_Layer: 0
-  m_Name: Scene Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &201965883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201965882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741b5fdf534c43544880d40313d667d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &201965884
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201965882}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253431923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1097,6 @@ GameObject:
   m_Component:
   - component: {fileID: 576508338}
   - component: {fileID: 576508337}
-  - component: {fileID: 576508339}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1176,20 +1131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &576508339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576508336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1549dd576e9620443b048065db0b9930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blackAndWhiteToggle: {fileID: 1403812798}
-  postProcessVolume: {fileID: 1360137290}
 --- !u!1 &638438454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2177,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 201965883}
+      - m_Target: {fileID: 1198768158}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -3215,6 +3156,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156908698}
   m_CullTransparentMesh: 1
+--- !u!1 &1198768157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198768160}
+  - component: {fileID: 1198768159}
+  - component: {fileID: 1198768158}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198768158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198768157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741b5fdf534c43544880d40313d667d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1198768159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198768157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1549dd576e9620443b048065db0b9930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackAndWhiteToggle: {fileID: 1403812798}
+  postProcessVolume: {fileID: 1360137290}
+--- !u!4 &1198768160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198768157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.89258, y: 2.190197, z: 1775.3485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250272103
 GameObject:
   m_ObjectHideFlags: 0
@@ -3473,6 +3473,7 @@ GameObject:
   - component: {fileID: 1360137289}
   - component: {fileID: 1360137291}
   - component: {fileID: 1360137290}
+  - component: {fileID: 1360137292}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3643,6 +3644,19 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1360137292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360137285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e83ddae7abb64f72bea0a7587bbe0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTransform: {fileID: 0}
 --- !u!1 &1374946925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4218,7 +4232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 201965883}
+      - m_Target: {fileID: 1198768158}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -4809,7 +4823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845571983}
   - component: {fileID: 1845571982}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5842,7 +5856,7 @@ SceneRoots:
   - {fileID: 1845571983}
   - {fileID: 1402961888}
   - {fileID: 740422776}
-  - {fileID: 201965884}
   - {fileID: 876579938}
   - {fileID: 1134904881}
   - {fileID: 576508338}
+  - {fileID: 1198768160}

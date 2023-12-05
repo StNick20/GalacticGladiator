@@ -11,21 +11,35 @@ public class BlackAndWhiteToggleHandler : MonoBehaviour
     public PostProcessVolume postProcessVolume;
     private ColorGrading colourGrading;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         postProcessVolume.profile.TryGetSettings(out colourGrading);
 
         // Load the black and white toggle state from PlayerPrefs or GameManager
-        bool isBlackAndWhiteEnabled = PlayerPrefs.GetInt("IsBlackAndWhiteEffect", 0) == 1 ? true : false;
+        bool isBlackAndWhiteEnabled;
+        if (PlayerPrefs.GetInt("IsBlackAndWhiteEnabled", 0) == 1)
+        {
+            isBlackAndWhiteEnabled = true;
+        }
+        else
+        {
+            isBlackAndWhiteEnabled = false;
+        }
         GameManager.Instance.IsBlackAndWhiteEnabled = isBlackAndWhiteEnabled;
 
+        //debugs to check values
+        Debug.Log("New Scene Loaded");
+        Debug.Log("PlayerPrefs Value: " + PlayerPrefs.GetInt("IsBlackAndWhiteEnabled", 0));
+        Debug.Log("GameManager Value: " + GameManager.Instance.IsBlackAndWhiteEnabled);
+        
+        //only runs if the toggle is available as some scenes do not include the toggle
         if (blackAndWhiteToggle != null)
         {
             blackAndWhiteToggle.isOn = false;
             blackAndWhiteToggle.onValueChanged.AddListener(ToggleBlackAndWhiteEffect);
-            ApplyBlackAndWhiteEffect();
+            
         }
+        ApplyBlackAndWhiteEffect();
     }
 
     void ToggleBlackAndWhiteEffect(bool isOn)
@@ -35,11 +49,11 @@ public class BlackAndWhiteToggleHandler : MonoBehaviour
 
         //Sace the black and white toggle state to PlayerPrefs or GameManager
         PlayerPrefs.SetInt("IsBlackAndWhiteEnabled", isOn ? 1 : 0);
+        Debug.Log("PlayerPrefs Value: " + PlayerPrefs.GetInt("IsBlackAndWhiteEnabled", 0));
     }
 
     void ApplyBlackAndWhiteEffect()
     {
         colourGrading.enabled.Override(GameManager.Instance.IsBlackAndWhiteEnabled);
     }
-
 }
