@@ -7,23 +7,20 @@ public class HealthKit : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-
-
-        GameObject player = GameObject.FindWithTag("Player");
-
-        PlayerHealth Health = player.GetComponent<PlayerHealth>();
-
         if (collider.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            PickUp(Health);
+            PickUp();
         }
     }
 
-    public void PickUp(PlayerHealth playerHealth)
+    public void PickUp()
     {
         Debug.Log("health kit picked up");
 
+        GameObject player = GameObject.FindWithTag("Player");
+        
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.heal();
     }    
 }

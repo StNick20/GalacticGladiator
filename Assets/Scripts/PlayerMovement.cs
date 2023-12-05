@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float runSpeed = 20.0f;
     public Vector2 mousePos;
-    public bool boost = false;
 
     [Header("Pausing")]
     public GameObject pauseObject;
@@ -36,16 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
-        if (boost)
-        {
-            runSpeed = 40.0f;
-        }
-        else
-        {
-            runSpeed = 20.0f;
-        }
-
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -83,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             vertical *= moveLimiter;
         } 
 
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+    body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 
     private void Shoot() 
@@ -106,15 +95,5 @@ public class PlayerMovement : MonoBehaviour
         ableToFire = false;
         yield return new WaitForSeconds(0.3f);
         ableToFire = true;
-    }
-
-    public IEnumerator Overdrive()
-    {
-        if (!ableToFire)
-        {
-            boost = true;
-            yield return new WaitForSeconds(0.9f);
-            boost = false;
-        }
     }
 }
