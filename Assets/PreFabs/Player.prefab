@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 688985661836040811}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7019968810811017154}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,8 @@ GameObject:
   - component: {fileID: 1040640719734079551}
   - component: {fileID: 8021125427437557727}
   - component: {fileID: 2304353269701886382}
-  m_Layer: 8
+  - component: {fileID: 3940018781179379023}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -92,7 +93,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2585, y: 2.3304, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7019968810811017154}
@@ -195,6 +196,8 @@ MonoBehaviour:
   ableToFire: 1
   runSpeed: 20
   mousePos: {x: 0, y: 0}
+  pauseObject: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!61 &2304353269701886382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -240,3 +243,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3940018781179379023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499846011026974764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be3ca100cdf744685ace7521bd8119bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  playerHealth: 0
+  healthBar: {fileID: 0}
+  deathScreen: {fileID: 0}
+  hud: {fileID: 0}
+  scriptToDisable: {fileID: 8021125427437557727}

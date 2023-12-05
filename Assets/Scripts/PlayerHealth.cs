@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 200;
     public int playerHealth;
     public HealthBar healthBar;
+    public int healing;
 
     [Header("Death Screen")]
     public GameObject deathScreen;
@@ -44,5 +45,11 @@ public class PlayerHealth : MonoBehaviour
         hud.SetActive(false);
         deathScreen.SetActive(true);
         scriptToDisable.enabled = false;
+    }
+
+    public void heal()
+    {
+        playerHealth += healing;
+        healthBar.SetHealth(playerHealth);
     }
 }
