@@ -12,7 +12,7 @@ TagManager:
   - Bullet
   - Water
   - UI
-  - 
+  - background
   - Player
   - Map
   - 
@@ -47,4 +47,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1246957427
+    locked: 0
+  - name: background
+    uniqueID: 964945455
+    locked: 0
+  - name: UI
+    uniqueID: 460469003
     locked: 0
