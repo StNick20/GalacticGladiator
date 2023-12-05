@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Bullet;
     public Transform firingPoint;
     public bool ableToFire = true;
+    public int MAXBULLET = 200;
+    public int bulletCount = 0;
+    public TMP_Text hudBulletCount;
 
 
     float horizontal;
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        hudBulletCount.text = bulletCount + "/200";
     }
 
     void Update()
@@ -37,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
         transform.localRotation = Quaternion.Euler(0, 0, angle);
 
-        if (Input.GetMouseButtonDown(0) && ableToFire)
+        if (Input.GetMouseButtonDown(0) && ableToFire && bulletCount > 0)
         {
             Shoot();
         }
-        else if (Input.GetMouseButton(0) && ableToFire)
+        else if (Input.GetMouseButton(0) && ableToFire && bulletCount > 0)
         {
             Shoot();
         }
@@ -74,6 +79,15 @@ public class PlayerMovement : MonoBehaviour
     {
         Instantiate(Bullet, firingPoint.position, firingPoint.rotation);
         StartCoroutine(shootCooldown());
+        bulletCount -= 1;
+        hudBulletCount.text = bulletCount + "/200";
+    }
+
+    public void AmmoPickUp(int amount)
+    {
+        bulletCount += amount;
+        if (bulletCount > 200) { bulletCount = 200; }
+        hudBulletCount.text = bulletCount + "/200";
     }
 
     private IEnumerator shootCooldown()
