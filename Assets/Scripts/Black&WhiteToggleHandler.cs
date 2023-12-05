@@ -35,7 +35,7 @@ public class BlackAndWhiteToggleHandler : MonoBehaviour
         //only runs if the toggle is available as some scenes do not include the toggle
         if (blackAndWhiteToggle != null)
         {
-            blackAndWhiteToggle.isOn = false;
+            blackAndWhiteToggle.isOn = isBlackAndWhiteEnabled;
             blackAndWhiteToggle.onValueChanged.AddListener(ToggleBlackAndWhiteEffect);
             
         }

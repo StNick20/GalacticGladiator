@@ -17,4 +17,10 @@ public class SceneLoader : MonoBehaviour
         Application.Quit(); // Close the application
         Debug.Log("Game Closed"); // Log a message to the console indicating that the game has been closed
     }
+
+    //method to load the "menu" scene
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
