@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 1641849039}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1489,6 +1489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 227564529}
   speed: 10
+  distanceBetween: 20
 --- !u!212 &1641849036
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1875,14 +1876,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1040640719734079551, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
       propertyPath: m_Mass
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1040640719734079551, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1040640719734079551, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040640719734079551, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
       propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040640719734079551, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3364884731213275046, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
