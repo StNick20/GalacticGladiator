@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2599313942479222825}
   - component: {fileID: 5508645921638940486}
   - component: {fileID: 2945638504288552793}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AmmoBox
   m_TagString: powerUp
   m_Icon: {fileID: 0}

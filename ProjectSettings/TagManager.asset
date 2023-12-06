@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - powerUp
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - Water
   - UI
   - background
+  - PowerUp
   - Player
   - Map
-  - 
   - 
   - 
   - 
