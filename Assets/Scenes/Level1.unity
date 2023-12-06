@@ -307,11 +307,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76920ff5c02e40741bd57ad2ba007455, type: 3}
---- !u!1 &227564529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4499846011026974764, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
-  m_PrefabInstance: {fileID: 6484086149030487643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &469061340
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +829,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103522176}
   m_CullTransparentMesh: 1
+--- !u!1 &1124735126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1124735127}
+  m_Layer: 0
+  m_Name: BulletPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1124735127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124735126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1641849037}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1193293487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1065,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258501328}
   m_CullTransparentMesh: 1
+--- !u!1 &1448616864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4499846011026974764, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
+  m_PrefabInstance: {fileID: 6484086149030487643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1456237376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,9 +1496,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1641849037}
   - component: {fileID: 1641849036}
-  - component: {fileID: 1641849035}
   - component: {fileID: 1641849038}
   - component: {fileID: 1641849039}
+  - component: {fileID: 1641849040}
+  - component: {fileID: 1641849041}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1475,21 +1507,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1641849035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641849034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da941377e9f8934986ef03d937d164b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 227564529}
-  speed: 10
-  distanceBetween: 20
 --- !u!212 &1641849036
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1554,7 +1571,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1124735127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1641849038
@@ -1619,6 +1637,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1641849040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641849034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84c67f71450eaa429f9878347774a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1448616864}
+  speed: 10
+  distanceBetween: 15
+--- !u!114 &1641849041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641849034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11c821f2d79f37409e312ce3c2d3f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 993683898176812571, guid: fc33e50aca0e04e6781331974280263f, type: 3}
+  bulletPos: {fileID: 1124735127}
 --- !u!1 &1705070350
 GameObject:
   m_ObjectHideFlags: 0

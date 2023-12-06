@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+
     public GameObject player;
     public float speed;
     public float distanceBetween;
