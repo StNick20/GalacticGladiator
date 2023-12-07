@@ -198,6 +198,7 @@ MonoBehaviour:
   ableToFire: 1
   MAXBULLET: 200
   bulletCount: 50
+  reloadAmount: 20
   hudBulletCount: {fileID: 0}
   runSpeed: 20
   mousePos: {x: 0, y: 0}
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 8385186787804770044}
-  shieldCharge: 1
+  shieldCharge: 2
 --- !u!1 &8385186787804770044
 GameObject:
   m_ObjectHideFlags: 0

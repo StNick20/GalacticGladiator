@@ -6,34 +6,34 @@ using UnityEditor;
 public class EnergyShield : MonoBehaviour
 {
     public GameObject shield;
-    [SerializeField] public int shieldCharge = 0;
+    public int shieldCharge = 0;
+    public bool shieldStatus = false;
+
+    void Start()
+    {
+        shield = GameObject.FindWithTag("Shield");
+    }
 
     public void ActivateShield()
     {
-        shieldCharge += 1;
-        UpdateShieldStatus();
+        if(shieldCharge < 3)
+        {
+            shieldCharge += 1;
+        }
+        Debug.Log("shieldCharge value: " + shieldCharge);
     }
 
-    private void UpdateShieldStatus()
+    void Update()
     {
-        if (shieldCharge <= 0)
+        if(shieldCharge > 0)
         {
-            Debug.Log("Shield deactivated");
-            SetShieldActive(false);
+            shieldStatus = true;
         }
-        else
+        if(shieldCharge == 0)
         {
-            Debug.Log("Shield activated");
-            SetShieldActive(true);
+            shieldStatus = false;
         }
 
-        EditorUtility.SetDirty(this);
-    }
-
-    private void SetShieldActive(bool isActive)
-    {
-        Debug.Log("Setting shield active status: " + isActive);
-        shield.SetActive(isActive);
-        Debug.Log("Is shield active: " + shield.activeSelf);
+        shield.SetActive(shieldStatus);
     }
 }

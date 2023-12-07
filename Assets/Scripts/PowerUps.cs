@@ -5,14 +5,14 @@ using UnityEngine;
 public class PowerUps : MonoBehaviour
 {
     public int powerUpId;
-    public GameObject Player;
+    private GameObject Player;
 
-    void start()
+    void Start()
     {
         Player = GameObject.FindWithTag("Player");
     }
 
-    private void OnCollisionEnter2D(Collision2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player"))
         {
@@ -23,6 +23,9 @@ public class PowerUps : MonoBehaviour
                     break;
                 case 1:
                     Player.GetComponent<PlayerHealth>().Heal();
+                    break;
+                case 2:
+                    Player.GetComponent<EnergyShield>().ActivateShield();
                     break;
             }
             
