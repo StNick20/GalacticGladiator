@@ -38,15 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (boost)
-        {
-            runSpeed = 40.0f;
-        }
-        else
-        {
-            runSpeed = 20.0f;
-        }
-
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -82,15 +73,22 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
-        } 
-
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        }
+        if (boost == true)
+        {
+            body.velocity = new Vector2(horizontal * (runSpeed * 2), vertical * (runSpeed * 2));
+        }
+        else if (boost == false)
+        {
+            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        }
+        
     }
 
     private void Shoot() 
     {
         Instantiate(Bullet, firingPoint.position, firingPoint.rotation);
-        StartCoroutine(shootCooldown());
+        StartCoroutine(Cooldown(0));
         bulletCount -= 1;
         hudBulletCount.text = bulletCount + "/200";
     }
@@ -102,17 +100,21 @@ public class PlayerMovement : MonoBehaviour
         hudBulletCount.text = bulletCount + "/200";
     }
 
-    private IEnumerator shootCooldown()
+    public IEnumerator Cooldown(int cooldownID)
     {
-        ableToFire = false;
-        yield return new WaitForSeconds(0.3f);
-        ableToFire = true;
-    }
-
-    public IEnumerator Overdrive()
-    { 
-        boost = true;
-        yield return new WaitForSeconds(0.9f);
-        boost = false;
+        switch (cooldownID)
+        {
+            case 0:
+                ableToFire = false;
+                yield return new WaitForSeconds(0.3f);
+                ableToFire = true;
+                break;
+            case 1:
+                boost = true;
+                yield return new WaitForSeconds(3.0f);
+                boost = false;
+                break;
+        }
+        
     }
 }

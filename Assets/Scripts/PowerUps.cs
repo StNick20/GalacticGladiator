@@ -27,9 +27,14 @@ public class PowerUps : MonoBehaviour
                 case 2:
                     Player.GetComponent<EnergyShield>().ActivateShield();
                     break;
+                case 3:
+                    StartCoroutine(Player.GetComponent<PlayerMovement>().Cooldown(1));
+                    break;
             }
             
         }
         Destroy(gameObject);
     }
+
+    
 }
