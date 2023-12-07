@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    
     Rigidbody2D body;
     [Header("Firing")]
     public GameObject Bullet;
@@ -74,11 +74,18 @@ public class PlayerMovement : MonoBehaviour
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
-
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        if (boost == true)
+        {
+            body.velocity = new Vector2(horizontal * (runSpeed * 2), vertical * (runSpeed * 2));
+        }
+        else if (boost == false)
+        {
+            body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        }
+        
     }
 
-    private void Shoot()
+    private void Shoot() 
     {
         Instantiate(Bullet, firingPoint.position, firingPoint.rotation);
         StartCoroutine(Cooldown(0));

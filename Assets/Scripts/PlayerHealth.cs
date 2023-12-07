@@ -29,6 +29,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerTakeDamage(20);
+        }
         if(playerHealth < 1)
         { 
             Death();
