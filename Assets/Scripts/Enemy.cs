@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public int maxHealth = 100;
+    private int currentHealth;
 
     public GameObject player;
     public int minSpeed = 1;  // Set your minimum speed
