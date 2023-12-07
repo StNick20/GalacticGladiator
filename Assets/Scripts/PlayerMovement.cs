@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public bool ableToFire = true;
     public int MAXBULLET = 200;
     public int bulletCount = 0;
+    public int reloadAmount = 20;
     public TMP_Text hudBulletCount;
 
 
@@ -94,9 +95,9 @@ public class PlayerMovement : MonoBehaviour
         hudBulletCount.text = bulletCount + "/200";
     }
 
-    public void AmmoPickUp(int amount)
+    public void AmmoPickUp()
     {
-        bulletCount += amount;
+        bulletCount += reloadAmount;
         if (bulletCount > 200) { bulletCount = 200; }
         hudBulletCount.text = bulletCount + "/200";
     }
@@ -109,12 +110,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public IEnumerator Overdrive()
-    {
-        if (!ableToFire)
-        {
-            boost = true;
-            yield return new WaitForSeconds(0.9f);
-            boost = false;
-        }
+    { 
+        boost = true;
+        yield return new WaitForSeconds(0.9f);
+        boost = false;
     }
 }

@@ -677,10 +677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3052001701650506406, guid: 438b1356a1fdc2a42a9fe9bb371f84dd, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 4499846011026974764, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
     - target: {fileID: 6405648522650847914, guid: 438b1356a1fdc2a42a9fe9bb371f84dd, type: 3}
       propertyPath: m_Name
       value: HealthKit

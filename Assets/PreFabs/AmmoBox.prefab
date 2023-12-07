@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8151105324619502922}
   - component: {fileID: 2599313942479222825}
   - component: {fileID: 5508645921638940486}
-  - component: {fileID: 2945638504288552793}
+  - component: {fileID: 6592419454181928703}
   m_Layer: 7
   m_Name: AmmoBox
   m_TagString: powerUp
@@ -135,7 +135,7 @@ PolygonCollider2D:
       - {x: 0, y: -0.25}
       - {x: 0.5, y: 0}
   m_UseDelaunayMesh: 0
---- !u!114 &2945638504288552793
+--- !u!114 &6592419454181928703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7588213117145465989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4e0b14ce4e7134dac6cfd45e25243d, type: 3}
+  m_Script: {fileID: 11500000, guid: 29fdc41b0808a664b905ec5a99094845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpAmount: 60
+  powerUpId: 0
+  Player: {fileID: 0}

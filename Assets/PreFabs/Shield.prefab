@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6943877254007706144}
   - component: {fileID: 8750882246628956549}
   - component: {fileID: 477594695192854448}
+  - component: {fileID: 7109425492054535941}
   m_Layer: 7
   m_Name: Shield
   m_TagString: powerUp
@@ -134,4 +135,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4499846011026974764, guid: 9c518af54c9aed244a9807c6afc3e4ff, type: 3}
-  shield: {fileID: 0}
+--- !u!114 &7109425492054535941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338467145417046619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fdc41b0808a664b905ec5a99094845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpId: 2
+  Player: {fileID: 0}

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2693559265940089037}
   - component: {fileID: 7511980661437785195}
-  - component: {fileID: 3052001701650506406}
   - component: {fileID: 4015054900874888328}
+  - component: {fileID: 3733039178721346929}
   m_Layer: 7
   m_Name: HealthKit
   m_TagString: powerUp
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3052001701650506406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6405648522650847914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236fa905ab11e434b83006041de7a8cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &4015054900874888328
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +121,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &3733039178721346929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405648522650847914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fdc41b0808a664b905ec5a99094845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpId: 1
+  Player: {fileID: 0}

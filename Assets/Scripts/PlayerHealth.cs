@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
         scriptToDisable.enabled = false;
     }
 
-    public void heal()
+    public void Heal()
     {
         playerHealth += healing;
         healthBar.SetHealth(playerHealth);
