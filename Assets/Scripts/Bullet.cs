@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-     public float speed = 50f;
-     public float lifeTime = 3f;
+    public float speed = 50f;
+    public float lifeTime = 3f;
 
     private Rigidbody2D rb;
 
@@ -16,5 +16,13 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate(){
         rb.velocity = transform.up * speed;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Map"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
