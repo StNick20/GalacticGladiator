@@ -14,7 +14,15 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, lifeTime);
     }
 
-    private void FixedUpdate(){
+    private void FixedUpdate()
+    {
         rb.velocity = transform.up * speed;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
