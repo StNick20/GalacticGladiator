@@ -8,6 +8,8 @@ TagManager:
   - powerUp
   - Shield
   - PlayerBullet
+  - Bullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
