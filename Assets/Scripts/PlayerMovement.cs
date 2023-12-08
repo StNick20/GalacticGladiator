@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
+
     Rigidbody2D body;
     [Header("Firing")]
     public GameObject Bullet;
@@ -65,12 +65,12 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
-        } 
+        }
 
-    body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 
-    private void Shoot() 
+    private void Shoot()
     {
         Instantiate(Bullet, firingPoint.position, firingPoint.rotation);
         StartCoroutine(shootCooldown());
