@@ -228,3 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  powerUps:
+  - {fileID: 1824901337639406999, guid: 438b1356a1fdc2a42a9fe9bb371f84dd, type: 3}
+  - {fileID: 3024588016998820488, guid: c04b13e6a33ee3f4e9fe9c713686b147, type: 3}
+  - {fileID: 4964499894117792729, guid: e9597817f4f2a444b95f554da2388acf, type: 3}
