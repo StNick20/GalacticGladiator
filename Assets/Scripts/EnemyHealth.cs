@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+
+    [Header("Enemy Health")]
     public int health;
     public GameObject[] powerUps;
+
+    [Header("Scoring")]
+    public int ScoreWorth;
+    public GameObject ScoreBoard;
+
+    void Start()
+    {
+        ScoreBoard = GameObject.Find("ScoreBoard");
+    }
 
     // Update is called once per frame
     void Update()
@@ -14,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
             powerUpDrop();
+            ScoreBoard.GetComponent<Scoring>().score += ScoreWorth;
         }
     }
 

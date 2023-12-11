@@ -23,4 +23,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void LeaderBoard()
+    {
+        SceneManager.LoadScene("LeaderBoard");
+    }
 }

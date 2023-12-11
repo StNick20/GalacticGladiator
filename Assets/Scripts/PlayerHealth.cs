@@ -42,6 +42,9 @@ public class PlayerHealth : MonoBehaviour
     // Function to handle player death
     public void Death()
     {
+        GameObject.Find("ScoreBoard").GetComponent<Scoring>().FinalScore();
+
+
         //disable hud and show death screen
         hud.SetActive(false);
         deathScreen.SetActive(true);
