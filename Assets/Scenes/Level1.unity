@@ -539,27 +539,27 @@ MonoBehaviour:
     noOfEnemies: 5
     typeOfEnemies:
     - {fileID: 6693625752179973031, guid: 158e659805518a94fafdfdd44e8ef470, type: 3}
-    spawnInterval: 0
+    spawnInterval: 0.3
   - waveName: Wave 2
     noOfEnemies: 8
     typeOfEnemies:
     - {fileID: 6693625752179973031, guid: 158e659805518a94fafdfdd44e8ef470, type: 3}
-    spawnInterval: 0
+    spawnInterval: 0.3
   - waveName: Wave 3
     noOfEnemies: 12
     typeOfEnemies:
     - {fileID: 6693625752179973031, guid: 158e659805518a94fafdfdd44e8ef470, type: 3}
-    spawnInterval: 0
+    spawnInterval: 0.3
   - waveName: Wave 4
     noOfEnemies: 18
     typeOfEnemies:
     - {fileID: 7292990335643384136, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
-    spawnInterval: 0
+    spawnInterval: 0.3
   - waveName: Wave 5
     noOfEnemies: 25
     typeOfEnemies:
     - {fileID: 6693625752179973031, guid: 158e659805518a94fafdfdd44e8ef470, type: 3}
-    spawnInterval: 0
+    spawnInterval: 0.3
   spawnPoints:
   - {fileID: 1791823992}
   - {fileID: 237080423}
