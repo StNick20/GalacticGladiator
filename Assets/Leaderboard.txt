@@ -1,5 +1,5 @@
+Nik​:17360
+Hel​:9620
 Nik:780
 Stn​:666
-Wee​:420
-Ave:0
-Cla:0
+Tst​:500

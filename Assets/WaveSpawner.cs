@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 [System.Serializable]
 public class Wave 
 {
@@ -21,8 +22,11 @@ public class WaveSpawner : MonoBehaviour
 
     private bool canSpawn = true;
 
+    public TMP_Text WaveDisplay;
+
     private void Update() 
     {
+        WaveDisplay.text = "Wave: " + (currentWaveNumber + 1);
         currentWave = waves[currentWaveNumber];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy"); // keep track of enemies

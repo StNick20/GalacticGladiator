@@ -12,7 +12,7 @@ public class LeaderBoard : MonoBehaviour
     // Declare the leaderboard array
     private string[] leaderboard;
 
-    void Start()
+    void Update()
     {
         // Read all lines from the leaderboard file
         leaderboard = File.ReadAllLines(leaderboardFilePath);
