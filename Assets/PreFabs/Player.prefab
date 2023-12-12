@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 688985661836040811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7019968810811017154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3684525892932590858}
   - component: {fileID: 4929667400044522913}
   - component: {fileID: 202346659570794711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldCharge: 0
-  shieldActive: 0
+  MaxShield: 3
   shield: {fileID: 7205118668090849721}
 --- !u!1 &7205118668090849721
 GameObject:
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1289289946085083864}
   - component: {fileID: 1070673863087548071}
   - component: {fileID: 4980768204864321013}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shield
   m_TagString: shield
   m_Icon: {fileID: 0}
