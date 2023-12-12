@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
         //disable the player movement script
         scriptToDisable.enabled = false;
+        gameObject.GetComponent<PlayerHealth>().enabled = false;
     }
 
     //function to heal the player
