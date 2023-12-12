@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathScreen; //reference to the death screen game object
     public GameObject hud; //reference to the hud game object
     public PlayerMovement scriptToDisable; //referecnce to the player movement script to disable on death
+    public DamageHUD damageHUD;
     
     void Start()
     {
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         // Decrease player health and update the health bar
         playerHealth = playerHealth - damage;
         healthBar.SetHealth(playerHealth);
+        damageHUD.ShowDamageHUD();
     } 
 
     void Update()
