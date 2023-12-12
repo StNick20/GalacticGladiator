@@ -572,6 +572,7 @@ MonoBehaviour:
     noOfEnemies: 0
     typeOfEnemies: []
     spawnInterval: 0
+  WaveDisplay: {fileID: 1426351978}
 --- !u!4 &590669632
 Transform:
   m_ObjectHideFlags: 0
@@ -1442,13 +1443,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5512365192489921224, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 458.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512365192489921224, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 114.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512365192489921224, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000099371
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512365192489921224, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512365192489921224, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -235
+      objectReference: {fileID: 0}
     - target: {fileID: 7292990335643384136, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
       propertyPath: m_Name
       value: DeathCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7292990335643384136, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7458455036627774909, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
       propertyPath: m_Name
@@ -1563,7 +1584,8 @@ PrefabInstance:
       value: LeaderBoard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5981794530925094848, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bd6d80372fa5fe4ca29c69cd42f8bb0, type: 3}
