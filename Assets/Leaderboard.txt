@@ -1,9 +1,8 @@
-Nik​:55200
-Poo​:18020
-Blank:0
-Blank:0
-Blank:0
-0
+Nik​:68000
+Ave​:66700
+Seb​:36040
+Nik​:21760
+Nik​:17360
 0
 0
 0
