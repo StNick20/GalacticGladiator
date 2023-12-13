@@ -19,8 +19,20 @@ public class NewScore : MonoBehaviour
 
     void Start()
     {
-        
 
+        if (!File.Exists(leaderboardFilePath))
+        {
+            string[] lines = new string[]
+            {
+            "Blank:0",
+            "Blank:0",
+            "Blank:0",
+            "Blank:0",
+            "Blank:0"
+            };
+
+            File.WriteAllLines(leaderboardFilePath, lines);
+        }
         // Read all lines from the leaderboard file
         leaderboard = File.ReadAllLines(leaderboardFilePath);
 

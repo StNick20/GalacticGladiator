@@ -12,6 +12,23 @@ public class LeaderBoard : MonoBehaviour
     // Declare the leaderboard array
     private string[] leaderboard;
 
+    void Start()
+    {
+        if (!File.Exists(leaderboardFilePath))
+        {
+            string[] lines = new string[]
+            {
+            "Blank:0",
+            "Blank:0",
+            "Blank:0",
+            "Blank:0",
+            "Blank:0"
+            };
+
+            File.WriteAllLines(leaderboardFilePath, lines);
+        }
+    }
+
     void Update()
     {
         // Read all lines from the leaderboard file
