@@ -35,17 +35,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         // Check if the collided object is another enemy on the same layer
-        if (other.CompareTag("Enemy") && other.gameObject.layer == gameObject.layer)
+        if (other.gameObject.CompareTag("Enemy") && other.gameObject.layer == gameObject.layer)
         {
             // Adjust the position to prevent overlap
             Vector2 avoidPos = transform.position + (transform.position - other.transform.position).normalized * 30f;
             transform.position = Vector2.MoveTowards(transform.position, avoidPos, randomSpeed * Time.deltaTime);
         }
 
-        if (other.CompareTag("Player") && other.gameObject.layer == gameObject.layer)
+        if (other.gameObject.CompareTag("Player") && other.gameObject.layer == gameObject.layer)
         {
             // Adjust the position to prevent overlap
             Vector2 avoidPos = transform.position + (transform.position - other.transform.position).normalized * 30f;
