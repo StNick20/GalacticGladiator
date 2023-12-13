@@ -1,5 +1,5 @@
-Nik​:68000
-Seb​:36040
-Nik​:21760
-Nik​:17360
-Poo​:11000
+Nik​:55200
+Poo​:18020
+Blank:0
+Blank:0
+Blank:0
