@@ -32,7 +32,7 @@ public class PowerUps : MonoBehaviour
                     break;
                 // Power-up ID 1: Reload the player's weapon
                 case 1:
-                    player.GetComponent<PlayerMovement>().Reload();
+                    player.GetComponent<WeaponController>().Reload();
                     break;
                 // Power-up ID 2: Charge up the energy shield
                 case 2:
