@@ -12,6 +12,10 @@ public class WeaponController : MonoBehaviour
     public bool ableToFire = true;
     public int maxBullet = 0;
     public int bulletCount = 0;
+    public int pistolAmmo = 30;
+    public int maxPistol = 60;
+    public int shotgunAmmo = 10;
+    public int maxShotgun = 20;
     public int reloadAmount = 0;
     public TMP_Text bulletCounter;
 
@@ -23,6 +27,8 @@ public class WeaponController : MonoBehaviour
 
         SetWeapon<Shotgun>();
         UpdateBulletCounter();
+        maxBullet = maxShotgun;
+        bulletCount = shotgunAmmo;
     }
 
     // Update is called once per frame
@@ -32,17 +38,20 @@ public class WeaponController : MonoBehaviour
         {
             SetWeapon<Pistol>();
             selectedWeapon = "Pistol";
-            bulletCount = 30;
+            bulletCount = pistolAmmo;
+            maxBullet = maxPistol;
             UpdateBulletCounter();
+
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SetWeapon<Shotgun>();
             selectedWeapon = "Shotgun";
-            bulletCount = 10;
+            bulletCount = shotgunAmmo;
+            maxBullet = maxShotgun;
             UpdateBulletCounter();
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        /*else if (Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("R");
            if(selectedWeapon == "Shotgun"){
@@ -53,6 +62,17 @@ public class WeaponController : MonoBehaviour
             bulletCount = 30;
             UpdateBulletCounter();
            }
+        }*/
+
+        if(selectedWeapon == "Shotgun")
+        {
+            shotgunAmmo = bulletCount;
+            UpdateBulletCounter();
+        }
+        else if(selectedWeapon == "Pistol")
+        {
+            pistolAmmo = bulletCount;
+            UpdateBulletCounter();
         }
 
 
@@ -67,11 +87,11 @@ public class WeaponController : MonoBehaviour
         }
     }
     void ReloadCurrentWeapon(){
-    if (currentWeapon != null)
-    {
-        currentWeapon.Reload();
-        UpdateBulletCounter();
-    }
+        if (currentWeapon != null)
+        {
+            currentWeapon.Reload();
+            UpdateBulletCounter();
+        }
     }
 
 
@@ -86,35 +106,50 @@ public class WeaponController : MonoBehaviour
     {
         if (bulletCounter != null)
         {
-            bulletCounter.text = bulletCount.ToString();
+            bulletCounter.text = bulletCount.ToString() + "/" + maxBullet.ToString();
         }
     }
 
     public void SetWeapon<T>() where T : Weapon
-{
-    // Destroy the previous weapon script component
-    if (currentWeapon != null)
     {
-        Destroy(currentWeapon);
+        // Destroy the previous weapon script component
+        if (currentWeapon != null)
+        {
+            Destroy(currentWeapon);
+        }
+
+        // Add the new weapon component to the same GameObject
+        currentWeapon = gameObject.AddComponent<T>();
+        currentWeapon.firePoint = firePoint;
+        currentWeapon.bulletPrefab = bulletPrefab;
+        currentWeapon.bulletForce = bulletForce;
+
+        // Update bullet counter when switching weapons
+        /*bulletCount = Mathf.Min(bulletCount, currentWeapon.GetMaxAmmo());
+        UpdateBulletCounter();
+        */
+
+        // Initialize the new weapon
+        currentWeapon.Initialize();
     }
 
-    // Add the new weapon component to the same GameObject
-    currentWeapon = gameObject.AddComponent<T>();
-    currentWeapon.firePoint = firePoint;
-    currentWeapon.bulletPrefab = bulletPrefab;
-    currentWeapon.bulletForce = bulletForce;
-
-    // Update bullet counter when switching weapons
-    bulletCount = Mathf.Min(bulletCount, currentWeapon.GetMaxAmmo());
-    UpdateBulletCounter();
-
-    // Initialize the new weapon
-    currentWeapon.Initialize();
-}
-
-    internal void Reload()
+    public void Reload()
     {
-        throw new System.NotImplementedException();
+        shotgunAmmo += 5;
+        if(shotgunAmmo > maxShotgun) { shotgunAmmo = maxShotgun; }
+        pistolAmmo += 10;
+        if(pistolAmmo > maxPistol) { pistolAmmo = maxPistol; }
+
+        if(selectedWeapon == "Shotgun")
+        {
+            bulletCount = shotgunAmmo;
+        }
+        else if(selectedWeapon == "Pistol")
+        {
+            bulletCount = pistolAmmo;
+        }
+        Debug.Log("Reload");
+        UpdateBulletCounter();
     }
 }
 
@@ -129,50 +164,58 @@ public abstract class Weapon : MonoBehaviour
     // Separate ammo count for each weapon
     protected int ammoCount = 0;
 
-    // Method to get the maximum ammo count for the weapon
-    public virtual int GetMaxAmmo(){
-        return 0; // Default value, override in subclasses
-        }
+
     public int reloadAmount = 0;
 
-   public virtual void Shoot(){
+    // Method to get the maximum ammo count for the weapon
+    public virtual int GetMaxAmmo()
+    {
+        return 0; // Default value, override in subclasses
+    }
+
+    public virtual void Shoot(){
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Debug.Log("Bullet instantiated");
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb == null){
+        if (rb == null)
+        {
             rb = bullet.AddComponent<Rigidbody2D>();
         }
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
-    public int GetCurrentAmmo(){
+
+    public int GetCurrentAmmo()
+    {
         return ammoCount;
     }
 
-    public void SetAmmoCount(int count){
+    public void SetAmmoCount(int count)
+    {
         ammoCount = count;
     }
+
     public void Initialize()
     {
         ammoCount = GetMaxAmmo();
     }
 
-public virtual void Reload()
-{
+    public virtual void Reload()
+    {
 
     
-    // Calculate the amount of ammo needed to reach the maximum capacity
-    int remainingAmmoSpace = GetMaxAmmo() - GetCurrentAmmo();
+        // Calculate the amount of ammo needed to reach the maximum capacity
+        int remainingAmmoSpace = GetMaxAmmo() - GetCurrentAmmo();
     
-    // Calculate the amount of ammo to reload (e.g., reloadAmount is the number of bullets reloaded per reload)
-    int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
+        // Calculate the amount of ammo to reload (e.g., reloadAmount is the number of bullets reloaded per reload)
+        int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
 
-    // Perform the actual reload
-    ammoCount += ammoToReload;
+        // Perform the actual reload
+        ammoCount += ammoToReload;
 
-    // Log the reloading action (you can replace this with your own feedback mechanism)
-    Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
+        // Log the reloading action (you can replace this with your own feedback mechanism)
+        Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
 
-}
+    }
 
 }
 
@@ -191,14 +234,14 @@ public class Pistol : Weapon
     }
 
     // Override the Reload method
-public override void Reload()
-{
-    int remainingAmmoSpace = pistolBulletCount - GetCurrentAmmo();
-    int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
-    SetAmmoCount(GetCurrentAmmo() + ammoToReload);
+    public override void Reload()
+    {
+        int remainingAmmoSpace = pistolBulletCount - GetCurrentAmmo();
+        int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
+        SetAmmoCount(GetCurrentAmmo() + ammoToReload);
 
-    Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
-}
+        Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
+    }
 
 
     // Override the Shoot method
