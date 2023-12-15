@@ -16,11 +16,13 @@ public class WeaponController : MonoBehaviour
     public TMP_Text bulletCounter;
 
     private Weapon currentWeapon;  // Track the current weapon instance
-
+    string selectedWeapon = "Shotgun";
     // Set the default weapon to Shotgun in Start or Awake
     void Start()
     {
+
         SetWeapon<Shotgun>();
+        UpdateBulletCounter();
     }
 
     // Update is called once per frame
@@ -29,37 +31,49 @@ public class WeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetWeapon<Pistol>();
+            selectedWeapon = "Pistol";
+            bulletCount = 30;
+            UpdateBulletCounter();
         }
-        // Switch weapons when the key is pressed
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SetWeapon<Shotgun>();
+            selectedWeapon = "Shotgun";
+            bulletCount = 10;
+            UpdateBulletCounter();
         }
-        
-        /*
-        else if (Input.GetKeyDown(KeyCode.Alpha3)){
-            SetWeapon<Launcher>();
-        }*/
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("R");
+           if(selectedWeapon == "Shotgun"){
+            bulletCount = 10;
+            UpdateBulletCounter();
+           }
+           if(selectedWeapon == "Pistol"){
+            bulletCount = 30;
+            UpdateBulletCounter();
+           }
+        }
 
 
         // Fire when left mouse button is clicked
-        if (Input.GetMouseButtonDown(0) && ableToFire)
+        if (Input.GetMouseButtonDown(0) && ableToFire && bulletCount > 0)
         {
-            Debug.Log("Left Click");
             // Shoot
             currentWeapon.Shoot();
+            bulletCount--;
+            UpdateBulletCounter();
             StartCoroutine(shootCooldown());
         }
     }
-
-    public void Reload()
+    void ReloadCurrentWeapon(){
+    if (currentWeapon != null)
     {
-        bulletCount += reloadAmount;
-        if (bulletCount > maxBullet)
-        {
-            bulletCount = maxBullet;
-        }
+        currentWeapon.Reload();
+        UpdateBulletCounter();
     }
+    }
+
 
     private IEnumerator shootCooldown()
     {
@@ -68,47 +82,126 @@ public class WeaponController : MonoBehaviour
         ableToFire = true;
     }
 
+    void UpdateBulletCounter()
+    {
+        if (bulletCounter != null)
+        {
+            bulletCounter.text = bulletCount.ToString();
+        }
+    }
 
     public void SetWeapon<T>() where T : Weapon
+{
+    // Destroy the previous weapon script component
+    if (currentWeapon != null)
     {
-        // Destroy the previous weapon script component
-        if (currentWeapon != null)
-        {
-            Destroy(currentWeapon);
-        }
+        Destroy(currentWeapon);
+    }
 
-        // Add the new weapon component to the same GameObject
-        currentWeapon = gameObject.AddComponent<T>();
-        currentWeapon.firePoint = firePoint;
-        currentWeapon.bulletPrefab = bulletPrefab;
-        currentWeapon.bulletForce = bulletForce;
+    // Add the new weapon component to the same GameObject
+    currentWeapon = gameObject.AddComponent<T>();
+    currentWeapon.firePoint = firePoint;
+    currentWeapon.bulletPrefab = bulletPrefab;
+    currentWeapon.bulletForce = bulletForce;
+
+    // Update bullet counter when switching weapons
+    bulletCount = Mathf.Min(bulletCount, currentWeapon.GetMaxAmmo());
+    UpdateBulletCounter();
+
+    // Initialize the new weapon
+    currentWeapon.Initialize();
+}
+
+    internal void Reload()
+    {
+        throw new System.NotImplementedException();
     }
 }
 
-public class Weapon : MonoBehaviour
+// ------------------------------------------------------------------------------------------------------------------- //
+
+public abstract class Weapon : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletForce = 10f;
 
-   public virtual void Shoot()
-{
-    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    Debug.Log("Bullet instantiated");
-    Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-    if (rb == null)
-    {
-        rb = bullet.AddComponent<Rigidbody2D>();
+    // Separate ammo count for each weapon
+    protected int ammoCount = 0;
+
+    // Method to get the maximum ammo count for the weapon
+    public virtual int GetMaxAmmo(){
+        return 0; // Default value, override in subclasses
+        }
+    public int reloadAmount = 0;
+
+   public virtual void Shoot(){
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log("Bullet instantiated");
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb == null){
+            rb = bullet.AddComponent<Rigidbody2D>();
+        }
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    }
+    public int GetCurrentAmmo(){
+        return ammoCount;
     }
 
-    rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    public void SetAmmoCount(int count){
+        ammoCount = count;
+    }
+    public void Initialize()
+    {
+        ammoCount = GetMaxAmmo();
+    }
+
+public virtual void Reload()
+{
+
+    
+    // Calculate the amount of ammo needed to reach the maximum capacity
+    int remainingAmmoSpace = GetMaxAmmo() - GetCurrentAmmo();
+    
+    // Calculate the amount of ammo to reload (e.g., reloadAmount is the number of bullets reloaded per reload)
+    int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
+
+    // Perform the actual reload
+    ammoCount += ammoToReload;
+
+    // Log the reloading action (you can replace this with your own feedback mechanism)
+    Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
+
 }
+
 }
+
+// -----------------------------------  PISTOL CONFIG ------------------------------------------------------------------------- //
 
 public class Pistol : Weapon
 {
     public int pelletCount = 1;
-    public float spreadAngle = 0f; // Adjust the spread angle as needed
+    public int pistolBulletCount = 15;
+    public float spreadAngle = 0f;
+
+    // Override the GetMaxAmmo method
+    public override int GetMaxAmmo()
+    {
+        return pistolBulletCount;
+    }
+
+    // Override the Reload method
+public override void Reload()
+{
+    int remainingAmmoSpace = pistolBulletCount - GetCurrentAmmo();
+    int ammoToReload = Mathf.Min(remainingAmmoSpace, reloadAmount);
+    SetAmmoCount(GetCurrentAmmo() + ammoToReload);
+
+    Debug.Log($"Reloading... Current Ammo: {GetCurrentAmmo()}");
+}
+
+
+    // Override the Shoot method
     public override void Shoot()
     {
         for (int i = 0; i < pelletCount; i++)
@@ -126,12 +219,46 @@ public class Pistol : Weapon
         }
     }
 }
+
+
+
+// -----------------------------------  SHOTGUN CONFIG ------------------------------------------------------------------------- //
+
 
 public class Shotgun : Weapon
 {
-    public int pelletCount = 5;
-    public float spreadAngle = 15f; // Adjust the spread angle as needed
+    private weaponAmmoManager AmmoManager;
 
+    public int pelletCount = 5;
+    public int shotgunBulletCount = 10;
+    public float spreadAngle = 15f;
+
+    // Override the GetMaxAmmo method
+    public override int GetMaxAmmo()
+    {
+        return shotgunBulletCount;
+    }
+
+    // Override the Reload method
+    public Shotgun()
+    {
+        // Assuming you want to initialize the AmmoManager with some initial ammo count
+        AmmoManager = new weaponAmmoManager(initialAmmo: 50);
+    }
+
+    public override void Reload()
+    {
+        // Call the Reload method from the base class (Weapon)
+        base.Reload();
+
+        // Assuming each shotgun shot consumes 1 ammo
+        int ammoConsumed = 1;
+
+        // Call the ManageAmmo method from the AmmoManager class
+        AmmoManager.ManageAmmo(ammoConsumed);
+    }
+
+    // Override the Shoot method
     public override void Shoot()
     {
         for (int i = 0; i < pelletCount; i++)
@@ -149,6 +276,17 @@ public class Shotgun : Weapon
         }
     }
 }
+
+
+
+// -----------------------------------  LAUNCHER CONFIG ------------------------------------------------------------------------- //
+
+
+
+
+
+
+
 /*public class Launcher : Weapon
 {
     public float explosionRadius = 5f;
