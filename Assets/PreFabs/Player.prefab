@@ -73,12 +73,13 @@ GameObject:
   - component: {fileID: 3364884731213275046}
   - component: {fileID: 7030988236813544282}
   - component: {fileID: 1040640719734079551}
-  - component: {fileID: 8021125427437557727}
   - component: {fileID: 2304353269701886382}
   - component: {fileID: 6600340764108119615}
   - component: {fileID: 3684525892932590858}
   - component: {fileID: 4929667400044522913}
   - component: {fileID: 202346659570794711}
+  - component: {fileID: 9055334035152620624}
+  - component: {fileID: 2353961080950056153}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -183,27 +184,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8021125427437557727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4499846011026974764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d678b56e70944538d8225b4910b87a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 993683898176812571, guid: fc33e50aca0e04e6781331974280263f, type: 3}
-  firingPoint: {fileID: 7019968810811017154}
-  ableToFire: 1
-  maxBullet: 200
-  bulletCount: 100
-  reloadAmount: 30
-  bulletCounter: {fileID: 0}
-  runSpeed: 20
-  mousePos: {x: 0, y: 0}
 --- !u!61 &2304353269701886382
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -302,7 +282,8 @@ MonoBehaviour:
   healAmount: 20
   deathScreen: {fileID: 0}
   hud: {fileID: 0}
-  scriptToDisable: {fileID: 8021125427437557727}
+  scriptToDisable: {fileID: 0}
+  damageHUD: {fileID: 0}
 --- !u!114 &4929667400044522913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +314,40 @@ MonoBehaviour:
   shieldCharge: 0
   MaxShield: 3
   shield: {fileID: 7205118668090849721}
+--- !u!114 &9055334035152620624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499846011026974764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca511f0db8cd504583fccbd7ff631f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 7019968810811017154}
+  bulletPrefab: {fileID: 993683898176812571, guid: fc33e50aca0e04e6781331974280263f, type: 3}
+  bulletForce: 10
+  ableToFire: 1
+  maxBullet: 200
+  bulletCount: 100
+  reloadAmount: 30
+  bulletCounter: {fileID: 0}
+--- !u!114 &2353961080950056153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499846011026974764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d678b56e70944538d8225b4910b87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 20
+  mousePos: {x: 0, y: 0}
 --- !u!1 &7205118668090849721
 GameObject:
   m_ObjectHideFlags: 0
